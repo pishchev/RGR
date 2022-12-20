@@ -7,7 +7,7 @@ class RandomForestClassifierImpl:
         self.subset_size = 0.5
         self.random_state = random_state
 
-    def fit(self, x: np.ndarray, y: np.ndarray) -> None:
+    def fit(self, x: np.ndarray, y: np.ndarray) -> any:
         gen = np.random.RandomState(self.random_state)
         subset_size = int(x.shape[0] * self.subset_size)
 
@@ -16,6 +16,8 @@ class RandomForestClassifierImpl:
             x_subset = x[subset_indices, ...]
             y_subset = y[subset_indices, ...]
             cls.fit(x_subset, y_subset)
+
+        return self
 
     def predict(self, x) -> np.ndarray:
         pred_table = np.zeros((x.shape[0], len(self.classifiers)), dtype=np.int64)
