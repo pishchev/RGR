@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 class RandomForestClassifierImpl:
     def __init__(self, n_estimators = 100, max_depth = None, random_state: int=0) -> None:
-        self.classifiers = [DecisionTreeClassifier(criterion='gini', max_features='sqrt', max_depth=max_depth) for _ in range(n_estimators)]
+        self.classifiers = [DecisionTreeClassifier(criterion='gini', max_depth=max_depth) for _ in range(n_estimators)]
         self.subset_size = 0.7
         self.random_state = random_state
 
